@@ -46,10 +46,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-%sc3w#6^82#^aqj49xk0ivoa_(y^z*uc3(5(84&6q0)r+b(ejv"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = getenv("SECRET_KEY")
+DEBUG = getenv("DEBUG", True)
 
 
 INTERNAL_IPS = ["127.0.0.1"]
@@ -59,7 +57,7 @@ if DEBUG:
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS = [ip[:-1] + "1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
 
-ALLOWED_HOSTS = ["*"]  # TODO: modificare in prod
+ALLOWED_HOSTS = ["*"]  # SECURITY WARNING: do not allow all hosts in production
 
 # Application definition
 
