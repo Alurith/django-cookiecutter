@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include("{{cookiecutter.app_name_slug}}.urls")),
 ]
 
 if debug:

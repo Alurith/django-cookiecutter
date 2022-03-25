@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Home" context 'title' %} | {{ block.super }}{% endblock %}
+
+{% block page_content %}
+<div class="container mx-auto">
+    <section class="flex flex-col items-center justify-center h-screen">
+        <h1 class="text-6xl text-yellow-50 font-extrabold">
+            <span class="text text-green-500 inline">Django</span> +
+            <span class="text-cyan-500 inline">Tailwind</span> +
+            <span class="text-indigo-600 inline">htmx</span>
+        </h1>
+        <div class="mt-5">
+            <div class="rounded-md shadow">
+                <a href="#"
+                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                    hx-get="https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode" hx-target="#output">
+                    Get a joke</a>
+            </div>
+        </div>
+        <p id="output" class="mt-3 text-base text-yellow-50"></p>
+    </section>
+</div>
+{% endblock page_content %}

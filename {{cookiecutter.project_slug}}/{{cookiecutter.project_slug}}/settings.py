@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     "tailwind",
     "theme",
     "django_htmx",
+    "{{cookiecutter.app_name_slug}}",
 ]
 
 TAILWIND_APP_NAME = "theme"
