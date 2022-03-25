@@ -15,12 +15,11 @@
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
 
-    {% tailwind_css %}
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    {% block page %}{% endblock %}
-
+<body class="bg-gray-900">
+    {% block page_content %}{% endblock %}
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
 </body>
 
