@@ -1,5 +1,5 @@
 # Django cookiecutter template  
-[Cookiecutter](https://github.com/cookiecutter/cookiecutter) template for [Django](https://www.djangoproject.com/) using [Postgres](https://www.postgresql.org/), [htmx ](https://htmx.org/) and [Tailwindcss ](https://tailwindcss.com/).
+[Cookiecutter](https://github.com/cookiecutter/cookiecutter) template for [Django](https://www.djangoproject.com/) using [Postgres](https://www.postgresql.org/), [htmx](https://htmx.org/) and [Tailwindcss](https://tailwindcss.com/).
 
 ## The Stack:
 | PACKAGE     | VERSION |
@@ -43,6 +43,8 @@ docker-compose up
 Done!
  
 ## Update Philosophy
-TBD
+The stability of this stack is the main focus, so we will do any upgrade only in case of vulnerabilities or if some package has some interesting new features.
+The main branch will always host the latest version. Also, each version will have its tag and changelog.
+
 ## Issues & Pull Request
-Please describe your issue as clear as possible, so I can replicate the problem. Also, if you already worked on a fix you can submit a pull request.
+Please describe your issue as clear as possible, so I can replicate the issue. Also, if you already worked on a fix you can submit a pull request.
