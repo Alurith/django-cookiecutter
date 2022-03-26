@@ -2,17 +2,27 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.8.12"
+      - uses: BSFishy/pip-action@v1
+        with:
+          packages: cookiecutter
+      - name: Generate cookiecutter project
+        run: |
+          cookiecutter . --no-input
+      - name: Build the Docker image
+        run: |
+          cd django-test/
+          mv .env-proto .env
+          docker build . --file Dockerfile --tag my-image-name:$(date +%s)
