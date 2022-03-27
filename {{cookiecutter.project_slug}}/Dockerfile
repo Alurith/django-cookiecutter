@@ -1,17 +1,20 @@
 # syntax=docker/dockerfile:1
-FROM python:3.8
+FROM python:3.8-alpine3.15 as build
+ENV PYTHONUNBUFFERED=1 \
+    PATH="/usr/app/venv/bin:$PATH"
 
-ENV PYTHONUNBUFFERED=1
-RUN apt-get update && apt-get install -y \
-    nodejs npm \
-    && rm -rf /var/lib/{apt,dpkg,cache,log}/
+WORKDIR /usr/app
 
+RUN apk update && apk add --no-cache \
+    gcc libpq-dev libc-dev \
+    nodejs npm
+
+RUN python -m venv /usr/app/venv
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+FROM build as develop
 WORKDIR /app
-RUN useradd -m webapp \
-    && chown -R webapp /app
+COPY . /app/
 
-USER webapp
-COPY --chown=webapp requirements.txt /app/
-RUN pip install --upgrade pip && pip install -r requirements.txt
-COPY --chown=webapp . /app/
 RUN python manage.py tailwind install --no-input

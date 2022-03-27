@@ -3,7 +3,10 @@ version: "3"
 services:
   web:
     restart: always
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: develop
     ports:
       - "8000:8000"
     volumes:
