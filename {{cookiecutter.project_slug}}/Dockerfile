@@ -2,10 +2,16 @@
 FROM python:3.8
 
 ENV PYTHONUNBUFFERED=1
-WORKDIR /app
-RUN apt-get update && apt-get install -y git wget gcc build-essential libssl-dev python-dev postgresql postgresql-contrib nodejs npm
+RUN apt-get update && apt-get install -y \
+    nodejs npm \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-COPY requirements.txt /app/
+WORKDIR /app
+RUN useradd -m webapp \
+    && chown -R webapp /app
+
+USER webapp
+COPY --chown=webapp requirements.txt /app/
 RUN pip install --upgrade pip && pip install -r requirements.txt
-COPY . /app/
+COPY --chown=webapp . /app/
 RUN python manage.py tailwind install --no-input
