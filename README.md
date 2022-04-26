@@ -5,7 +5,7 @@
 | PACKAGE     | VERSION |
 | ----------- | ------- |
 | Python      | 3.8     |
-| Django      | 4.0.3   |
+| Django      | 4.0.4   |
 | Postgres    | latest  |
 | htmx        | 1.7.0   |
 | Tailwindcss | 3.0     |
