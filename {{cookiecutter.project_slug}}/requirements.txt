@@ -1,6 +1,6 @@
 asgiref==3.5.2
 Django==4.1.10
-sqlparse==0.4.2
+sqlparse==0.4.4
 tzdata==2021.5
 python-dotenv==0.20.0
 dj-database-url==0.5.0
