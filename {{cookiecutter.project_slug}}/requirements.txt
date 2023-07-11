@@ -1,5 +1,5 @@
 asgiref==3.5.0
-Django==4.0.8
+Django==4.1.10
 sqlparse==0.4.2
 tzdata==2021.5
 python-dotenv==0.20.0
